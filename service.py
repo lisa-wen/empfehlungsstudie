@@ -55,7 +55,7 @@ def search(query: str, topn: int, field_names=None):
 def search_by_id(id):
     try:
         query = index.parse_query(f'id:{id}')
-    except ValueError as e:
+    except (ValueError, SyntaxError) as e:
         query = index.parse_query(f'id:_{id}')
     results = searcher.search(query, 1)
     (score, address) = results.hits[0]
@@ -105,7 +105,7 @@ def embedding(id: str, topn: int) -> dict:
                 doc = search_by_id(ids[recommendation])
                 item_data = process_doc(doc)
                 recommendations_list.append(item_data)
-            except IndexError as e:
+            except Exception as e:
                 print("Could not process recommendation:", e)
     return recommendations_list
 
