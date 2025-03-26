@@ -11,3 +11,9 @@ comparing different recommendation
 methods for open data datasets from 
 the [umwelt.info](https://umwelt.info/) 
 platform.
+
+The app was tested with Python 3.11. 
+In your virtual Python environment install
+by issuing
+
+`pip install -r requirements.txt`
